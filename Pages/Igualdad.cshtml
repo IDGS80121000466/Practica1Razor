@@ -1,0 +1,52 @@
+﻿@page
+@model Practica1.Pages.IgualdadModel
+@{
+}
+<h3>Igualdad</h3>
+<form method="POST" class="p-3 bg-light rounded shadow-sm">
+    <div class="mb-3">
+        <label for="a" class="form-label">a:</label>
+        <input type="number" step="1" asp-for="a" class="form-control" id="a" />
+    </div>
+    <div class="mb-3">
+        <label for="b" class="form-label">b:</label>
+        <input type="number" step="1" asp-for="b" class="form-control" id="b" />
+    </div>
+    <div class="mb-3">
+        <label for="x" class="form-label">x:</label>
+        <input type="number" step="1" asp-for="x" class="form-control" id="x" />
+    </div>
+    <div class="mb-3">
+        <label for="y" class="form-label">y:</label>
+        <input type="number" step="1" asp-for="y" class="form-control" id="y" />
+    </div>
+    <div class="mb-3">
+        <label for="n" class="form-label">n:</label>
+        <input type="number" step="1" asp-for="n" class="form-control" id="n" />
+    </div>
+    <button type="submit" class="btn btn-primary">Calcular</button>
+
+    @if (!string.IsNullOrEmpty(Model.mensaje)){
+        <div class="alert alert-info mt-3">
+            <strong>¡Importante!</strong> @Model.mensaje
+        </div>
+    }
+
+    @if (Model.elevadoN != 0){
+        <div class="alert alert-success mt-3">
+            <p>(@Model.a * @Model.x + @Model.b * @Model.y)<sup>@Model.n</sup></p>
+            <p>(@Model.multAX + @Model.multBY)<sup>@Model.n</sup></p>
+            <p>(@Model.suma)<sup>@Model.n</sup></p>
+            <strong>Resultado = @Model.elevadoN</strong>
+        </div>
+
+        <div class="alert alert-secondary mt-3">
+            <h4>Sumatoria:</h4>
+            <br />
+            <img src="/img/formula.png" alt="Formula" width="100" height="40" />
+            @for (int k = 0; k < Model.resultadosSumatoria.Count; k++){
+                <p>k=@k = @Model.resultadosSumatoria[k]</p>
+            }
+        </div>
+    }
+</form>

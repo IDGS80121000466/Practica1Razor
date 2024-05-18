@@ -1,0 +1,49 @@
+﻿@page
+@model Practica1.Pages.numerosAleatoriosModel
+@{
+}
+<h3>Números Aleatorios</h3>
+
+<div class="table-responsive bg-light p-3 rounded shadow-sm mb-4">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th colspan="100%" class="text-center">Números Originales</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var numero in Model.numerosAleatoriosOriginal){
+                    <td>@numero</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="alert alert-info">
+    <p><strong>Suma de los números:</strong> @Model.suma</p>
+    <p><strong>Promedio:</strong> @Model.promedio</p>
+</div>
+
+<div class="table-responsive bg-light p-3 rounded shadow-sm mb-4">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th colspan="100%" class="text-center">Números Ordenados</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var numero in Model.numerosAleatorios){
+                    <td>@numero</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="alert alert-success">
+    <p><strong>Moda:</strong> @Model.moda</p>
+    <p><strong>Mediana:</strong> @Model.mediana</p>
+</div>

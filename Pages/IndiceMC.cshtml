@@ -1,0 +1,61 @@
+﻿@page
+@model Practica1.Pages.IndiceMCModel
+@{
+}
+<h3>Indice de Masa Corporal (IMC)</h3>
+<form method="POST" class="p-3 bg-light rounded shadow-sm">
+    <div class="mb-3">
+        <label for="peso" class="form-label">Peso (Kg):</label>
+        <input type="number" step="0.1" asp-for="peso" class="form-control" id="peso" />
+    </div>
+    <div class="mb-3">
+        <label for="altura" class="form-label">Altura (Cm):</label>
+        <input type="number" step="0.1" asp-for="altura" class="form-control" id="altura" />
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Calcular</button>
+    </div>
+    @if (Model.division != 0){
+        <div class="alert alert-info mt-3">
+            El IMC es: <strong>@Model.division</strong>
+        </div>
+    }
+    <p>La clasificación para tu IMC es:</p>
+    @if (Model.division < 18 && Model.division != 0){
+        <div class="alert alert-warning mt-3">
+            <strong>Peso Bajo</strong>
+            <br />
+            <img src="/img/pesoBajo.png" alt="Peso Bajo" width="400" height="400" />
+        </div>
+    }else if (Model.division >= 18 && Model.division < 25){
+        <div class="alert alert-success mt-3">
+            <strong>Peso Normal</strong>
+            <br />
+            <img src="/img/pesoNormal.png" alt="Peso Normal" width="400" height="400" />
+        </div>
+    }else if (Model.division >= 25 && Model.division < 27){
+        <div class="alert alert-warning mt-3">
+            <strong>Sobrepeso</strong>
+            <br />
+            <img src="/img/pesoSobrePesO.png" alt="Sobrepeso" width="400" height="400" />
+        </div>
+    }else if (Model.division >= 27 && Model.division < 30){
+        <div class="alert alert-danger mt-3">
+            <strong>Obesidad Grado I</strong>
+            <br />
+            <img src="/img/pesoObesidadGradoI.png" alt="Obesidad Grado I" width="400" height="400" />
+        </div>
+    }else if (Model.division >= 30 && Model.division < 40){
+        <div class="alert alert-danger mt-3">
+            <strong>Obesidad Grado II</strong>
+            <br />
+            <img src="/img/pesoObesidadGradoII.png" alt="Obesidad Grado II" width="400" height="400" />
+        </div>
+    }else if (Model.division >= 40){
+        <div class="alert alert-danger mt-3">
+            <strong>Obesidad Grado III</strong>
+            <br />
+            <img src="/img/pesoObesidadGradoIII.png" alt="Obesidad Grado III" width="400" height="400" />
+        </div>
+    }
+</form>
